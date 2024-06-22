@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming</title>
+</head>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+.header {
+  margin-left: 10px;
+  margin-right:10px;
+  margin-top:5px;
+  padding: 1px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 25px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.video-player {
+     margin-top: 50px;
+    flex: 2;
+    margin-right: 20px;
+}
+
+.video-player video {
+    width: 100%;
+    height: 475px;
+    border: 2px solid grey;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.playlist {
+    flex: 1;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.playlist h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.playlist ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playlist li {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    transition: background 0.3s;
+}
+
+.playlist li img {
+    width: 120px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.playlist li .video-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.playlist li .video-info p {
+    margin: 0;
+}
+
+.playlist li:hover,
+.playlist li.active {
+    background-color: #ddd;
+}
+#videoTitle{
+       font-weight: bold;
+        color:black;
+        font-size:25px;
+        margin-top: 20px;
+        margin-left: 50px;
+}
+
+</style>
+
+<body>
+      <div class="header">
+             <h1>R PROGRAMMING</h1>
+       </div>
+    <div class="container">
+        <div class="video-player">
+            <video id="mainVideo" controls  poster="R.jpg">
+                <source src="RL1.mp4" type="video/mp4">
+            </video>
+            <div id="videoTitle">L-01 : Introduction to R programming</div>
+        </div>
+        <div class="playlist">
+            <h2>Playlist</h2>
+            <ul id="playlist">
+                <li data-video="RL1.mp4" data-title="L-01 : Introduction to R programming"  class="active">
+                    <img src="RL1.jpg" alt="Video 1">
+                    <div class="video-info">
+                        <p>L-01 : Introduction to R programming</p>
+                    </div>
+                </li>
+                <li data-video="RL2.mp4" data-title="L-02 : Features of R language" >
+                    <img src="RL2.jpg" alt="Video 2">
+                    <div class="video-info">
+                        <p>L-02 : Features of R language</p>
+                    </div>
+                </li>
+                <li data-video="RL3.mp4" data-title="L-03 : Installation of R and R studio" >
+                    <img src="RL3.jpg" alt="Video 3">
+                    <div class="video-info">
+                        <p>L-03 : Installation of R and R studio</p>
+                    </div>
+                </li>
+                <li data-video="RL4.mp4" data-title="L-04 : How to Run a program on R console?" >
+                    <img src="RL4.jpg" alt="Video 4">
+                    <div class="video-info">
+                        <p>L-04 : How to Run a program on R console?</p>
+                    </div>
+                </li>
+                <li data-video="RL5.mp4" data-title="L-05 : Integrate Development Environment of R language">
+                    <img src="RL5.jpg" alt="Video 5">
+                    <div class="video-info">
+                        <p>L-05 : Integrate Development Environment of R language</p>
+                    </div>
+                </li>
+                <li data-video="RL6.mp4" data-title="L-06 : Variables in R programming" >
+                    <img src="RL6.jpg" alt="Video 6">
+                    <div class="video-info">
+                        <p>L-06 : Variables in R programming</p>
+                    </div>
+                </li>
+                <li data-video="RL7.mp4" data-title="L-07 : Datatypes in R language" >
+                    <img src="RL7.jpg" alt="Video 7">
+                    <div class="video-info">
+                        <p>L-07 : Datatypes in R language</p>
+                    </div>
+                </li>
+                <li data-video="RL8.mp4" data-title="L-08 : Conversion of Datatypes in R" >
+                    <img src="RL8.jpg" alt="Video 8">
+                    <div class="video-info">
+                        <p>L-08 : Conversion of Datatypes in R</p>
+                    </div>
+                </li>
+                <li data-video="RL9.mp4" data-title="L-09 : Operators in R language">
+                    <img src="RL9.jpg" alt="Video 9">
+                    <div class="video-info">
+                        <p>L-09 : Operators in R language</p>
+                    </div>
+                </li>
+                <li data-video="RL10.mp4" data-title="L-10 : If / else Statement in R programming" >
+                    <img src="RL10.jpg" alt="Video 10">
+                    <div class="video-info">
+                        <p>L-10 : If / else Statement in R programming</p>
+                    </div>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const playlistItems = document.querySelectorAll('#playlist li');
+    const mainVideo = document.getElementById('mainVideo');
+    const videoTitle = document.getElementById('videoTitle');
+
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            playlistItems.forEach(item => item.classList.remove('active'));
+            // Add active class to the clicked item
+            this.classList.add('active');
+
+            // Update the video source
+            const videoSrc = this.getAttribute('data-video');
+            const title = this.getAttribute('data-title');
+            mainVideo.querySelector('source').setAttribute('src', videoSrc);
+            videoTitle.textContent = title;
+            mainVideo.load();
+            mainVideo.play();
+        });
+    });
+});
+</script>
+</html>

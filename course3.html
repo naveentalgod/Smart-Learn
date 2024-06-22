@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container1 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container2 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .course-header img {
+            width: 500px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .course-details {
+            max-width: 800px;
+        }
+        .course-title {
+            font-size: 50px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .course-description {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .course-price {
+            font-size: 18px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .price-breakdown {
+            font-size: 16px;
+            color: #333;
+        }
+        .price-breakdown p {
+            margin: 5px 0;
+        }
+        .buy-now {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .content-summary {
+            margin-top: 20px;
+        }
+        .content-summary h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .content-summary ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content-summary li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+            .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .course-item {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .course-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .course-details {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-title1 {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .course-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .course-fees {
+            font-size: 14px;
+            color:black;
+            margin: 0 0 5px 0;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+</head>
+<body>
+    <br><br>
+   <div class="container1">
+        <div class="course-header">
+            <div class="course-details">
+                <h1 class="course-title1">C++</h1>
+                <p class="course-description">
+                    <b>Discription</b><br><br>
+                    DISCLAIMER: THE FEE OF THE COURSE IS NON-REFUNDABLE.
+                    <br><br>
+                    -Foundation Course
+                    <br>
+                    - Live Classes
+                    <br>
+                    - Recorded Classes
+                    <br>
+                    - Daily Practice Questions
+                    <br>
+                    - Topicwise Notes
+                    <br>
+                    - Test Series
+                </p>
+                <p class="course-price">₹8,389</p>
+                <div class="price-breakdown">
+                    <p>G.S.T (18%): ₹610</p>
+                    <p>Discount: - ₹5,000</p>
+                    <p>Internet Handling Charges: ₹105</p>
+                    <p><strong>Amount Payable: ₹4,104</strong></p>
+                </div><br><br>
+    <div class="container">
+        <div id="actionButton"></div>
+    </div>
+            </div>
+            <img src="course3.jpg" alt="Course Thumbnail">
+        </div>
+        <div class="content-summary">
+            <h2>Content Summary</h2>
+            <ul>
+                <li>10 Videos</li>
+                <li>10 Files</li>
+                <li>10 Tests</li>
+                <li><a href="coursett3.jpg">Course Planner</a></li>
+            </ul>
+        </div>
+   </div><br>
+<div class="container2">
+    <div class="recommended course">
+            <h2>Recommended Course</h2>
+        <ul id="course-list" class="course-list">
+            <li class="course-item">
+                <a href="course1.html">
+                <img src="course1.jpg" alt="C Programming">
+                <div class="course-details">
+                    <p class="course-title">C Programming</p>
+                    <p class="course-fees">₹999</p>
+                </div>
+                </a>
+            </li>
+            <li class="course-item">
+                <a href="course2.html">
+                <img src="course2.jpg" alt="Data Structure">
+                <div class="course-details">
+                    <p class="course-title">Data Structure</p>
+                    <p class="course-fees">₹1099</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course4.html">
+                <img src="course4.jpg" alt="Java">
+                <div class="course-details">
+                    <p class="course-title">Java</p>
+                    <p class="course-fees">₹1999</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course5.html">
+                <img src="course5.jpg" alt="Database Management System">
+                <div class="course-details">
+                    <p class="course-title">Database Management System</p>
+                    <p class="course-fees">₹3999</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course6.html">
+                <img src="course6.jpg" alt="Artificial Intelligence">
+                <div class="course-details">
+                    <p class="course-title">Artificial Intelligence</p>
+                    <p class="course-fees">₹799</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course7.html">
+                <img src="course7.jpg" alt="Python">
+                <div class="course-details">
+                    <p class="course-title">Python</p>
+                    <p class="course-fees">₹2599</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course8.html">
+                <img src="course8.jpg" alt="Computer Networks">
+                <div class="course-details">
+                    <p class="course-title">Computer Networks</p>
+                    <p class="course-fees">₹599</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course9.html">
+                <img src="course9.jpg" alt="Cyber Security">
+                <div class="course-details">
+                    <p class="course-title">Cyber Security</p>
+                    <p class="course-fees">₹1499</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course10.html">
+                <img src="course10.jpg" alt="Web Technology">
+                <div class="course-details">
+                    <p class="course-title">Web Technology</p>
+                    <p class="course-fees">₹9999</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course11.html">
+                <img src="course11.jpg" alt="R Programming">
+                <div class="course-details">
+                    <p class="course-title">R Programming</p>
+                    <p class="course-fees">₹2499</p>
+                </div>
+                </a>
+            </li>
+             <li class="course-item">
+                <a href="course12.html">
+                <img src="course12.jpg" alt="Kotlin">
+                <div class="course-details">
+                    <p class="course-title">Kotlin</p>
+                    <p class="course-fees">₹699</p>
+                </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentCompleted = localStorage.getItem('paymentCompleted');
+            const actionButton = document.getElementById('actionButton');
+
+            if (paymentCompleted) {
+                actionButton.innerHTML = '<a href="content3.html" class="btn">Go to Course</a>';
+            } else {
+                actionButton.innerHTML = '<a href="payment3.html" class="btn">Buy Course</a>';
+            }
+        });
+    </script>
+</html>

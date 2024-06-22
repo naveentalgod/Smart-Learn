@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming</title>
+</head>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+.header {
+  margin-left: 10px;
+  margin-right:10px;
+  margin-top:5px;
+  padding: 1px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 25px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.video-player {
+     margin-top: 50px;
+    flex: 2;
+    margin-right: 20px;
+}
+
+.video-player video {
+    width: 100%;
+    height: 475px;
+    border: 2px solid grey;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.playlist {
+    flex: 1;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.playlist h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.playlist ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playlist li {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    transition: background 0.3s;
+}
+
+.playlist li img {
+    width: 120px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.playlist li .video-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.playlist li .video-info p {
+    margin: 0;
+}
+
+.playlist li:hover,
+.playlist li.active {
+    background-color: #ddd;
+}
+#videoTitle{
+       font-weight: bold;
+        color:dark black;
+        font-size:25px;
+        margin-top: 20px;
+        margin-left: 50px;
+}
+
+</style>
+
+<body>
+      <div class="header">
+             <h1>C PROGRAMMING</h1>
+       </div>
+    <div class="container">
+        <div class="video-player">
+            <video id="mainVideo" controls  poster="C.jpg">
+                <source src="CL1.mp4" type="video/mp4">
+            </video>
+            <div id="videoTitle">L-01 : Introduction to C Language</div>
+        </div>
+        <div class="playlist">
+            <h2>Playlist</h2>
+            <ul id="playlist">
+                <li data-video="CL1.mp4" data-title="L-01 : Introduction to C Language"  class="active">
+                    <img src="CL1.jpg" alt="Video 1">
+                    <div class="video-info">
+                        <p>L-01 : Introduction to C Language</p>
+                    </div>
+                </li>
+                <li data-video="CL2.mp4" data-title="L-02 : Low level vs High level Languages" >
+                    <img src="CL2.jpg" alt="Video 2">
+                    <div class="video-info">
+                        <p>L-02 : Low level vs High level Languages</p>
+                    </div>
+                </li>
+                <li data-video="CL3.mp4" data-title="L-03 : Features of C Language" >
+                    <img src="CL3.jpg" alt="Video 3">
+                    <div class="video-info">
+                        <p>L-03 : Features of C Language</p>
+                    </div>
+                </li>
+                <li data-video="CL4.mp4" data-title="L-04 : Structure of a C Program" >
+                    <img src="CL4.jpg" alt="Video 4">
+                    <div class="video-info">
+                        <p>L-04 : Structure of a C Program</p>
+                    </div>
+                </li>
+                <li data-video="CL5.mp4" data-title="L-05 : Execution Process of a C Program">
+                    <img src="CL5.jpg" alt="Video 5">
+                    <div class="video-info">
+                        <p>L-05 : Execution Process of a C Program</p>
+                    </div>
+                </li>
+                <li data-video="CL6.mp4" data-title="L-06 : Variables in C Programming" >
+                    <img src="CL6.jpg" alt="Video 6">
+                    <div class="video-info">
+                        <p>L-06 : Variables in C Programming</p>
+                    </div>
+                </li>
+                <li data-video="CL7.mp4" data-title="L-07 : Keywords and Identifiers in C" >
+                    <img src="CL7.jpg" alt="Video 7">
+                    <div class="video-info">
+                        <p>L-07 : Keywords and Identifiers in C</p>
+                    </div>
+                </li>
+                <li data-video="CL8.mp4" data-title="L-08 : Data Types in C" >
+                    <img src="CL8.jpg" alt="Video 8">
+                    <div class="video-info">
+                        <p>L-08 : Data Types in C</p>
+                    </div>
+                </li>
+                <li data-video="CL9.mp4" data-title="L-09 : Operators in C">
+                    <img src="CL9.jpg" alt="Video 9">
+                    <div class="video-info">
+                        <p>L-09 : Operators in C</p>
+                    </div>
+                </li>
+                <li data-video="CL10.mp4" data-title="L-10 : If Statement in C" >
+                    <img src="CL10.jpg" alt="Video 10">
+                    <div class="video-info">
+                        <p>L-10 : If Statement in C</p>
+                    </div>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const playlistItems = document.querySelectorAll('#playlist li');
+    const mainVideo = document.getElementById('mainVideo');
+    const videoTitle = document.getElementById('videoTitle');
+
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            playlistItems.forEach(item => item.classList.remove('active'));
+            // Add active class to the clicked item
+            this.classList.add('active');
+
+            // Update the video source
+            const videoSrc = this.getAttribute('data-video');
+            const title = this.getAttribute('data-title');
+            mainVideo.querySelector('source').setAttribute('src', videoSrc);
+            videoTitle.textContent = title;
+            mainVideo.load();
+            mainVideo.play();
+        });
+    });
+});
+</script>
+</html>
