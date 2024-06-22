@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.left-container {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.left-container img {
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.right-container {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-group span {
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+
+.input-group input {
+    width: 60%;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+button {
+            width: 40%;
+            padding: 10px;
+            background-color: #ccc;
+            cursor: not-allowed;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+ button.enabled {
+            background-color:blue;
+            cursor: pointer;
+        }
+
+
+p {
+    margin-top: 20px;
+}
+p1{
+    color:green;
+    font-weight:bold;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="intro-text">
+                <h1>The future of education is here</h1>
+                <p>With an all in one platform for the teaching world</p>
+            </div>
+            <img src="Smart Learn.jpg" alt="Education Graphic">
+        </div>
+        <div class="right-container">
+            <h2>Verify OTP</h2> 
+            <p>please enter the 4-digit verification code sent to you at       +91  <p1 id="displaymobile"></p1></p>
+            <br>
+            <p><b>Enter OTP here</b></p><br>
+            <form id="otpForm">
+                <div class="input-group">
+                    <input type="text" id="otp" name="otp" maxlength="4" pattern="\d{4}"required/>
+                </div><br><br><br><br><br><br>
+               <button id="submit" disabled>Verify OTP</button>
+            </form>
+        </div>
+    </div>
+
+
+  <script>
+        document.getElementById('otp').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+    </script>
+
+ <script>
+        document.getElementById('otp').addEventListener('input', function () {
+            const input = this.value;
+            const button = document.getElementById('submit');
+            if (input.length === 4) {
+                button.disabled = false;
+                button.classList.add('enabled');
+            } else {
+                button.disabled = true;
+                button.classList.remove('enabled');
+            }
+        });
+    </script>
+
+ <script>
+        document.getElementById("otpForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            window.location.href = "store.html";
+        });
+    </script>
+    <script>
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const queries = queryString.split("&");
+            for (const query of queries) {
+                const [key, value] = query.split("=");
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            }
+            return params;
+        }
+
+        const params = getQueryParams();
+        const mobile = params.mobile;
+        if (mobile) {
+            document.getElementById('displaymobile').textContent = mobile;
+        } else {
+            document.getElementById('displaymobile').textContent = "No numbers provided.";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.left-container {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.left-container img {
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.right-container {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-group span {
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+
+.input-group input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+}
+
+button {
+            width: 40%;
+            padding: 10px;
+            background-color: #ccc;
+            cursor: not-allowed;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+ button.enabled {
+            background-color: #28a745;
+            cursor: pointer;
+        }
+
+
+p {
+    margin-top: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="intro-text">
+                <h1>The future of education is here</h1>
+                <p>With an all in one platform for the teaching world</p>
+            </div>
+            <img src="Smart Learn.jpg" alt="Education Graphic">
+        </div>
+        <div class="right-container">
+            <img src="logo.jpg" alt="Logo" class="logo">
+            <h2>Welcome to SMART LEARN!</h2><br><br>
+            <form id="login-form">
+                <label for="mobile"><b>Your Mobile Number</b></label>
+                <div class="input-group">
+                    <span>+91</span>
+                    <input type="text" id="mobile" name="mobile" maxlength="10" pattern="\d{10}" placeholder="Enter your mobile number" required/>
+                </div><br><br>
+               <button id="submit" disabled>Proceed Securely</button>
+            </form>
+            <p>By continuing, you agree to the <a href="terms.html">terms and conditions</a></p>
+        </div>
+    </div>
+
+
+  <script>
+        document.getElementById('mobile').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+    </script>
+
+ <script>
+        document.getElementById('mobile').addEventListener('input', function () {
+            const input = this.value;
+            const button = document.getElementById('submit');
+            if (input.length === 10) {
+                button.disabled = false;
+                button.classList.add('enabled');
+            } else {
+                button.disabled = true;
+                button.classList.remove('enabled');
+            }
+        });
+    </script>
+
+ <script>
+        document.getElementById("login-form").addEventListener("submit", function(event){
+            event.preventDefault();
+            window.location.href = "otp.html";
+        });
+    </script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const mobile = document.getElementById('mobile').value;
+            window.location.href = `otp.html?mobile=${encodeURIComponent(mobile)}`;
+        });
+    </script>
+
+</body>
+</html>

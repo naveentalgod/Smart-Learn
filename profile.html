@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.edit-section {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}      
+</style>
+
+<body>
+<button id="button" onclick="goBack()">Go Back</button>
+  <div class="container">
+    <h1>Profile</h1>
+    <div class="profile-section">
+      <img id="userPhoto" src="default-photo.jpg" alt="User Photo" class="profile-photo">
+      <div class="profile-info">
+        <p><strong>Name:</strong> <span id="userName">John Doe</span></p>
+        <p><strong>Email:</strong> <span id="userEmail">john.doe@example.com</span></p>
+        <p><strong>Phone:</strong> <span id="userPhone">123-456-7890</span></p>
+        <button onclick="toggleEdit()">Edit Profile</button>
+      </div>
+    </div>
+    <div class="edit-section" style="display: none;">
+      <h2>Edit Profile</h2>
+      <form id="editForm">
+        <label for="photoInput">Photo:</label>
+        <input type="file" id="photoInput" accept="image/*"><br><br>
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" required><br><br>
+        <label for="emailInput">Email:</label>
+        <input type="email" id="emailInput" required><br><br>
+        <label for="phoneInput">Phone:</label>
+        <input type="tel" id="phoneInput" required><br><br>
+        <button type="button" onclick="saveProfile()">Save</button>
+        <button type="button" onclick="toggleEdit()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  loadProfile();
+
+  document.getElementById('photoInput').addEventListener('change', (event) => {
+    const reader = new FileReader();
+    reader.onload = function () {
+      const photoDataURL = reader.result;
+      document.getElementById('userPhoto').src = photoDataURL;
+      localStorage.setItem('userPhoto', photoDataURL);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  });
+});
+
+function loadProfile() {
+  const name = localStorage.getItem('userName') || 'John Doe';
+  const email = localStorage.getItem('userEmail') || 'john.doe@example.com';
+  const phone = localStorage.getItem('userPhone') || '123-456-7890';
+  const photo = localStorage.getItem('userPhoto') || 'default-photo.jpg';
+
+  document.getElementById('userName').textContent = name;
+  document.getElementById('userEmail').textContent = email;
+  document.getElementById('userPhone').textContent = phone;
+  document.getElementById('userPhoto').src = photo;
+}
+
+function toggleEdit() {
+  const editSection = document.querySelector('.edit-section');
+  const profileSection = document.querySelector('.profile-section');
+  editSection.style.display = editSection.style.display === 'none' ? 'block' : 'none';
+  profileSection.style.display = profileSection.style.display === 'none' ? 'flex' : 'none';
+
+  if (editSection.style.display === 'block') {
+    document.getElementById('nameInput').value = document.getElementById('userName').textContent;
+    document.getElementById('emailInput').value = document.getElementById('userEmail').textContent;
+    document.getElementById('phoneInput').value = document.getElementById('userPhone').textContent;
+  }
+}
+
+function saveProfile() {
+  const name = document.getElementById('nameInput').value;
+  const email = document.getElementById('emailInput').value;
+  const phone = document.getElementById('phoneInput').value;
+
+  document.getElementById('userName').textContent = name;
+  document.getElementById('userEmail').textContent = email;
+  document.getElementById('userPhone').textContent = phone;
+
+  localStorage.setItem('userName', name);
+  localStorage.setItem('userEmail', email);
+  localStorage.setItem('userPhone', phone);
+
+  toggleEdit();
+}
+</script>
+<script>
+function goBack() {
+  window.history.back()
+}
+</script>
+
+
+</html>
